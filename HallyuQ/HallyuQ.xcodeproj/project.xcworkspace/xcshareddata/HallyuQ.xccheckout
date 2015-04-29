@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DDA79627-3E87-4FCE-8510-9C2BF4450568</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HallyuQ</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>39439AF07A33E452FABBCD0F1B5E35B1ABE06CB1</key>
+		<string>ssh://192.168.1.253/Users/qingyun/server/g5</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HallyuQ/HallyuQ.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>39439AF07A33E452FABBCD0F1B5E35B1ABE06CB1</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://192.168.1.253/Users/qingyun/server/g5</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>39439AF07A33E452FABBCD0F1B5E35B1ABE06CB1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>39439AF07A33E452FABBCD0F1B5E35B1ABE06CB1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>g5</string>
+		</dict>
+	</array>
+</dict>
+</plist>

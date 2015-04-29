@@ -1,0 +1,46 @@
+//
+//  HallyuQ-prefix.pch
+//  HallyuQ
+//
+//  Created by iPeta on 15/3/19.
+//  Copyright (c) 2015年 HallyuQ. All rights reserved.
+//
+
+#ifndef HallyuQ_HallyuQ_prefix_pch
+#define HallyuQ_HallyuQ_prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "UIView+Extension.h"
+#import "MBProgressHUD+MJ.h"
+#import <MJExtension.h>
+#import <MJRefresh.h>
+
+
+typedef enum
+{
+    accountTabViewButtonTypeMyData = 101,
+    accountTabViewButtonTypeNews = 102,
+    accountTabViewButtonTypeThread = 103
+    
+}accountTabViewButtonType;
+
+
+
+/**
+ *  资讯相关
+ */
+
+#import "ZYHttpTool.h"
+
+
+#define kCommonColor            [UIColor colorWithRed:0.848 green:0.195 blue:0.396 alpha:1.000]
+#define kScreenWidth            ([UIScreen mainScreen].bounds.size.width)
+#define kScreenHeight           ([UIScreen mainScreen].bounds.size.height)
+#define kStatusBarHeight        20.0f
+#define kNavigationBarHeight    44.0f
+
+
+
+
+#endif

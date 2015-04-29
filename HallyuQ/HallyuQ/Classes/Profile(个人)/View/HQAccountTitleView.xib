@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HQAccountTitleView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK6-Fa-xeb">
+                    <rect key="frame" x="335" y="6" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="34" id="ETs-Sg-wdk"/>
+                        <constraint firstAttribute="height" constant="34" id="ZAY-cD-FuP"/>
+                    </constraints>
+                    <state key="normal" image="btn_account_settings">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="settingBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Yih-Lo-y3z"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpk-rA-9nL">
+                    <rect key="frame" x="289" y="6" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="34" id="CZ3-nS-61n"/>
+                        <constraint firstAttribute="height" constant="34" id="uco-aj-O7p"/>
+                    </constraints>
+                    <state key="normal" image="btn_account_edit">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="editBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="hnk-w9-lns"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Persion_Image" translatesAutoresizingMaskIntoConstraints="NO" id="8K0-Tv-YE8">
+                    <rect key="frame" x="147.5" y="35" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="Tt7-fG-Zhd"/>
+                        <constraint firstAttribute="width" constant="80" id="WBB-2H-ww2"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNA-8R-RKm">
+                    <rect key="frame" x="134" y="148" width="45" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Jfl-0L-ykJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="52 粉丝">
+                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="fansBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="MyT-dw-9s2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKy-QJ-diU">
+                    <rect key="frame" x="196" y="148" width="53" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="BVh-eG-wYk"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="853 关注">
+                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="followBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="NH5-P4-gEj"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="伴随笑容坚强" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6g-nG-YGG">
+                    <rect key="frame" x="0.0" y="127" width="375" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mw-jR-g2x">
+                    <rect key="frame" x="187" y="155" width="1" height="16"/>
+                    <color key="backgroundColor" red="0.87935656836461129" green="0.87935656836461129" blue="0.87935656836461129" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="zPm-Q4-rnc"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.89411764705882346" green="0.28235294117647058" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="7mw-jR-g2x" firstAttribute="leading" secondItem="rNA-8R-RKm" secondAttribute="trailing" constant="8" id="0ID-c9-Cgr"/>
+                <constraint firstAttribute="bottom" secondItem="rNA-8R-RKm" secondAttribute="bottom" id="8Og-b9-FqF"/>
+                <constraint firstAttribute="centerX" secondItem="8K0-Tv-YE8" secondAttribute="centerX" id="9SO-Hf-czh"/>
+                <constraint firstItem="bK6-Fa-xeb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="EC2-ei-yDt"/>
+                <constraint firstAttribute="trailing" secondItem="bK6-Fa-xeb" secondAttribute="trailing" constant="6" id="Erv-2q-ic0"/>
+                <constraint firstAttribute="trailing" secondItem="Z6g-nG-YGG" secondAttribute="trailing" id="FQ0-8h-mfO"/>
+                <constraint firstAttribute="bottom" secondItem="AKy-QJ-diU" secondAttribute="bottom" id="Hnx-FM-OHD"/>
+                <constraint firstAttribute="bottom" secondItem="7mw-jR-g2x" secondAttribute="bottom" constant="7" id="KI6-25-B7F"/>
+                <constraint firstItem="bK6-Fa-xeb" firstAttribute="leading" secondItem="Xpk-rA-9nL" secondAttribute="trailing" constant="12" id="LbZ-95-gLM"/>
+                <constraint firstItem="Xpk-rA-9nL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="MDA-2A-XcB"/>
+                <constraint firstItem="AKy-QJ-diU" firstAttribute="leading" secondItem="7mw-jR-g2x" secondAttribute="trailing" constant="8" id="VCP-M3-0Ai"/>
+                <constraint firstItem="Z6g-nG-YGG" firstAttribute="top" secondItem="8K0-Tv-YE8" secondAttribute="bottom" constant="12" id="cfu-6x-lhb"/>
+                <constraint firstItem="7mw-jR-g2x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="155" id="gkj-sS-U9N"/>
+                <constraint firstAttribute="centerX" secondItem="7mw-jR-g2x" secondAttribute="centerX" id="ja6-Jd-DtE"/>
+                <constraint firstItem="8K0-Tv-YE8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="s9u-61-Jn5"/>
+                <constraint firstItem="Z6g-nG-YGG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vj2-TB-BrC"/>
+                <constraint firstAttribute="centerX" secondItem="Z6g-nG-YGG" secondAttribute="centerX" id="xbw-ss-gaa"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="fansBtn" destination="rNA-8R-RKm" id="Xno-Fe-qx9"/>
+                <outlet property="followBtn" destination="AKy-QJ-diU" id="Sa1-J2-k0w"/>
+                <outlet property="iconImageView" destination="8K0-Tv-YE8" id="UOk-vD-r4m"/>
+                <outlet property="nameLabel" destination="Z6g-nG-YGG" id="DyA-uu-uyY"/>
+            </connections>
+            <point key="canvasLocation" x="307.5" y="128"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Persion_Image" width="93" height="93"/>
+        <image name="btn_account_edit" width="24" height="24"/>
+        <image name="btn_account_settings" width="24" height="24"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

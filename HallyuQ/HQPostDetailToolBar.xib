@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="sWH-l9-4aW" customClass="HQPostDetailToolBar">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" tag="100" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzI-OM-Oe3">
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="7vG-NM-18O"/>
+                        <constraint firstAttribute="width" constant="50" id="9Ev-Ml-XZj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="999+" image="4">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClicked:" destination="sWH-l9-4aW" eventType="touchUpInside" id="pjm-aF-B6F"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G06-wq-R9u">
+                    <rect key="frame" x="276" y="0.0" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="0PW-7u-Oxr"/>
+                        <constraint firstAttribute="height" constant="44" id="BD5-cm-uT3"/>
+                    </constraints>
+                    <state key="normal" image="帖子-列表-收藏-press">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClicked:" destination="sWH-l9-4aW" eventType="touchUpInside" id="hBf-2w-eqC"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="我来评..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vla-r3-tA4">
+                    <rect key="frame" x="50" y="8" width="182" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDz-Ib-M0x">
+                    <rect key="frame" x="232" y="0.0" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="A9G-8V-TVU"/>
+                        <constraint firstAttribute="width" constant="44" id="lKu-X4-Kpd"/>
+                    </constraints>
+                    <state key="normal" image="shar_button"/>
+                    <connections>
+                        <action selector="buttonClicked:" destination="sWH-l9-4aW" eventType="touchUpInside" id="XAS-vq-0Zd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="G06-wq-R9u" firstAttribute="top" secondItem="sWH-l9-4aW" secondAttribute="top" id="1rp-vp-w0C"/>
+                <constraint firstItem="mDz-Ib-M0x" firstAttribute="leading" secondItem="vla-r3-tA4" secondAttribute="trailing" id="3r8-Ct-fd2"/>
+                <constraint firstAttribute="trailing" secondItem="G06-wq-R9u" secondAttribute="trailing" id="8Ol-uC-55f"/>
+                <constraint firstItem="vla-r3-tA4" firstAttribute="top" secondItem="sWH-l9-4aW" secondAttribute="topMargin" id="IiL-Kt-GDW"/>
+                <constraint firstItem="vla-r3-tA4" firstAttribute="baseline" secondItem="SzI-OM-Oe3" secondAttribute="baseline" id="U2b-8s-Ccm"/>
+                <constraint firstItem="SzI-OM-Oe3" firstAttribute="top" secondItem="sWH-l9-4aW" secondAttribute="top" id="XJD-Le-lFw"/>
+                <constraint firstItem="G06-wq-R9u" firstAttribute="leading" secondItem="mDz-Ib-M0x" secondAttribute="trailing" id="Z6E-06-jY5"/>
+                <constraint firstItem="vla-r3-tA4" firstAttribute="leading" secondItem="SzI-OM-Oe3" secondAttribute="trailing" id="a3b-4X-mbc"/>
+                <constraint firstItem="mDz-Ib-M0x" firstAttribute="top" secondItem="sWH-l9-4aW" secondAttribute="top" id="cSv-cI-aE0"/>
+                <constraint firstAttribute="trailing" secondItem="G06-wq-R9u" secondAttribute="trailing" id="dAY-wa-2vH"/>
+                <constraint firstItem="SzI-OM-Oe3" firstAttribute="leading" secondItem="sWH-l9-4aW" secondAttribute="leading" id="isY-L0-x0g"/>
+                <constraint firstItem="G06-wq-R9u" firstAttribute="leading" secondItem="mDz-Ib-M0x" secondAttribute="trailing" id="mR9-Qq-OKS"/>
+                <constraint firstItem="vla-r3-tA4" firstAttribute="leading" secondItem="SzI-OM-Oe3" secondAttribute="trailing" id="oph-Lr-4OL"/>
+                <constraint firstItem="mDz-Ib-M0x" firstAttribute="leading" secondItem="vla-r3-tA4" secondAttribute="trailing" id="tfd-7R-iTT"/>
+                <constraint firstItem="SzI-OM-Oe3" firstAttribute="leading" secondItem="sWH-l9-4aW" secondAttribute="leading" id="v5q-EY-6DI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="U2b-8s-Ccm"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="commentText" destination="vla-r3-tA4" id="tfW-2p-6lU"/>
+                <outlet property="likeButton" destination="SzI-OM-Oe3" id="o1D-zd-k2D"/>
+                <outlet property="shareButton" destination="mDz-Ib-M0x" id="jgF-uZ-SMr"/>
+                <outlet property="storeButton" destination="G06-wq-R9u" id="JnQ-xl-DLE"/>
+            </connections>
+            <point key="canvasLocation" x="-260" y="305"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="4" width="22" height="23"/>
+        <image name="shar_button" width="22" height="23"/>
+        <image name="帖子-列表-收藏-press" width="24" height="24"/>
+    </resources>
+</document>
