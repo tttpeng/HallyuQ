@@ -22,16 +22,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.tabBar.tintColor = [UIColor colorWithRed:0.837 green:0.279 blue:0.444 alpha:1.000];
+    UIColor *myColoer = [UIColor colorWithPatternImage:[UIImage imageNamed:@"nav_bg"]];
+    [UIColor colorWithRed:0.392 green:0.835 blue:0.522 alpha:1.000];
+    self.tabBar.tintColor = myColoer;
     HQHomeViewController *home = [[HQHomeViewController alloc] init];
-    [self addChildVC:home title:@"韩流Square" barTitle:@"广场" image:@"tab_square"];
+    [self addChildVC:home title:@"韩流Square" barTitle:@"广场" image:@"主导航-资讯-press"];
+
 
     HQBBSViewController *bbs = [[HQBBSViewController alloc] init];
-    [self addChildVC:bbs title:@"饭语" barTitle:@"八卦" image:@"tab_bagua"];
+    [self addChildVC:bbs title:@"饭语" barTitle:@"八卦" image:@"主导航-论坛-press"];
     
     HQProfileViewController *profile = [[HQProfileViewController alloc] init];
-    [self addChildVC:profile title:@"登录" barTitle:@"我的" image:@"tab_me"];
+    [self addChildVC:profile title:@"登录" barTitle:@"我的" image:@"主导航-个人页-press"];
 
     self.delegate = self;
 }

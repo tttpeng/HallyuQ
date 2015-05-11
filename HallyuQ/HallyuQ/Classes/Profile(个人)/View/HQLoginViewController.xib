@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
@@ -46,7 +46,7 @@
                             </variation>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxy-uw-Wh4" userLabel="账号view">
-                            <rect key="frame" x="37.5" y="142" width="300" height="80"/>
+                            <rect key="frame" x="38" y="142" width="300" height="80"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_login_nick" translatesAutoresizingMaskIntoConstraints="NO" id="reu-d3-w5S">
                                     <rect key="frame" x="0.0" y="7" width="25" height="25"/>
@@ -117,7 +117,7 @@
                             </variation>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ob-tX-OI0">
-                            <rect key="frame" x="37.5" y="242" width="300" height="43"/>
+                            <rect key="frame" x="38" y="242" width="300" height="43"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="9ob-tX-OI0" secondAttribute="height" multiplier="243:35" id="Mv3-yE-h0d"/>
@@ -137,7 +137,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7p-Ze-fkm">
-                            <rect key="frame" x="37.5" y="293" width="60" height="30"/>
+                            <rect key="frame" x="38" y="293" width="60" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="5xM-Ge-pFt"/>
                                 <constraint firstAttribute="width" constant="60" id="TGa-m9-NW1"/>

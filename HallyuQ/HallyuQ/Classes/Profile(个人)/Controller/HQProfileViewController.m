@@ -49,7 +49,7 @@
     CGFloat screenH = [UIScreen mainScreen].bounds.size.height;
     
     UIView *cyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenW, screenH * 0.5)];
-    cyView.backgroundColor = [UIColor colorWithRed:0.894 green:0.282 blue:0.467 alpha:1.000];
+    cyView.backgroundColor = [UIColor colorWithRed:0.000 green:0.878 blue:0.529 alpha:1.000];
     [self.view addSubview:cyView];
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -61,7 +61,7 @@
     self.tableView.dataSource = self;
     [super viewDidLoad];
     UIView *statusView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 375, 20)];
-    statusView.backgroundColor = [UIColor colorWithRed:0.894 green:0.282 blue:0.467 alpha:1.000];
+    statusView.backgroundColor = [UIColor colorWithRed:0.000 green:0.878 blue:0.529 alpha:1.000];
     [self.view addSubview:statusView];
     
     HQAccountTitleView *titleView = [HQAccountTitleView instanceWithFrame:CGRectMake(0, 0,  [UIScreen mainScreen].bounds.size.width, 100)];

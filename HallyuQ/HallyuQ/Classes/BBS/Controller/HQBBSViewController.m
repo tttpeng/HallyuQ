@@ -18,7 +18,9 @@
 #import <MJRefresh.h>
 #import "HQAddFansViewController.h"
 #import "HQUser.h"
+
 @interface HQBBSViewController ()<UIScrollViewDelegate,HQPostCellDelegate>
+
 @property (nonatomic, weak) UIButton *leftButton;
 @property (nonatomic,strong) NSMutableArray *postsArray;
 @end
@@ -38,7 +40,6 @@
     
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    //[self setData];
     [self setNavBar];
     __weak typeof(self) weakSelf = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
@@ -49,6 +50,7 @@
     [self.tableView addLegendFooterWithRefreshingBlock:^{
         [weakSelf loadMoreData];
     }];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidden) name:@"navHidden" object:nil];
 }
 
@@ -63,7 +65,7 @@
         parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"since_id":post.ID, @"refresh":@"1"}];
     }else
     {
-      parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"max_id":@"0",@"refresh":@"1"}];
+        parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"max_id":@"0",@"refresh":@"1"}];
     }
     // 设置请求格式
     // manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -84,39 +86,39 @@
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-         [self.tableView.legendHeader endRefreshing];
+        [self.tableView.legendHeader endRefreshing];
     }];
-
+    
 }
 - (void)loadMoreData
 {
     //获取bbs列表
-     NSMutableDictionary *parameters;
+    NSMutableDictionary *parameters;
     if (self.postsArray.count != 0) {
         HQPost *post = [self.postsArray lastObject];
-//        NSInteger maxID = [post.ID integerValue] -1;
+        //        NSInteger maxID = [post.ID integerValue] -1;
         parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"since_id":post.ID,@"refresh":@"2"}];
         
-         if ([post.ID integerValue] > 157) {
-         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        //NSDictionary *parameters = @{@"max_id":post.ID, @"refresh":@"1"};
+        if ([post.ID integerValue] > 157) {
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            //NSDictionary *parameters = @{@"max_id":post.ID, @"refresh":@"1"};
             // 设置请求格式
-        //manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        // 设置返回格式
-        manager.responseSerializer = [AFJSONResponseSerializer serializer];
-       [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/thread/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"JSON: %@", responseObject);
-        NSArray *postArray = [HQPost objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        //NSLog(@"%@]]]]]]]]]]]]]]]]]",postArray);
-        [self.postsArray addObjectsFromArray:postArray];
-        //NSDictionary *dataDic = responseObject[@"data"];
-        //HQUser *user = [HQUser objectWithKeyValues:dataDic[@"user"]];
-        [self.tableView.legendFooter endRefreshing];
-
-        [self.tableView reloadData];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-        }];
+            //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+            // 设置返回格式
+            manager.responseSerializer = [AFJSONResponseSerializer serializer];
+            [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/thread/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"JSON: %@", responseObject);
+                NSArray *postArray = [HQPost objectArrayWithKeyValuesArray:responseObject[@"data"]];
+                //NSLog(@"%@]]]]]]]]]]]]]]]]]",postArray);
+                [self.postsArray addObjectsFromArray:postArray];
+                //NSDictionary *dataDic = responseObject[@"data"];
+                //HQUser *user = [HQUser objectWithKeyValues:dataDic[@"user"]];
+                [self.tableView.legendFooter endRefreshing];
+                
+                [self.tableView reloadData];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Error: %@", error);
+            }];
         }
     }
 }
@@ -126,13 +128,8 @@
 }
 - (void)setNavBar
 {
-   
-    
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"leftButton_Nav"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonItemClick)];
-    self.navigationItem.leftBarButtonItem = leftItem;
-    
     UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-    titleView.text = @"饭语";
+    titleView.text = @"论坛";
     titleView.textAlignment = NSTextAlignmentCenter;
     titleView.font = [UIFont boldSystemFontOfSize:18];
     titleView.textColor = [UIColor whiteColor];
@@ -143,13 +140,9 @@
 
 
 - (void)viewWillAppear:(BOOL)animated
-{    [super viewWillAppear:animated];
-    self.navigationItem.title = @"DemoScrollNavigationBar";
+{
+    [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 //- (void)setData
@@ -172,15 +165,11 @@
 //        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //            NSLog(@"Error: %@", error);
 //        }];
-//    
+//
 //
 //}
 
 
-- (void)leftBarButtonItemClick
-{
-    
-}
 
 - (void)rightBarButtonItemClick
 {
@@ -194,17 +183,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    if (section == 0) {
-        return 1;
-    }else
-    {
-       return self.postsArray.count;
-    }
+    return self.postsArray.count;
 }
 
 #pragma mark -- postCell delegate
@@ -219,35 +203,20 @@
 #pragma mark - UIScrollViewDelegate 代理方方法
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        HQPostHeaderCell *cell = [HQPostHeaderCell cellWithTableView:tableView];
-        return cell;
-    }else
-    {
-       HQPostCell *cell = [HQPostCell cellWithTableView:tableView];
-       cell.post = self.postsArray[indexPath.row];
-        cell.delegate = self;
-    //NSLog(@"%@]]]]]]]]]]]]]",cell.titleLable.text);
-      return cell;
-    }
+    HQPostCell *cell = [HQPostCell cellWithTableView:tableView];
+    cell.post = self.postsArray[indexPath.row];
+    cell.delegate = self;
+    return cell;
     
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        HQPostHeaderCell *cell = [[NSBundle mainBundle] loadNibNamed:@"HQPostHeaderCell" owner:nil options:nil][0];
-        CGFloat cellHeight = cell.cellHeight;
-        return cellHeight;
-    }else
-    {
     HQPostCell *cell = [[NSBundle mainBundle] loadNibNamed:@"HQPostCell" owner:nil options:nil][0];
     HQPost *post = self.postsArray[indexPath.row];
     CGFloat cellheight = [cell cellHeightWithPost:post];
-    //NSLog(@"%f==========",cellheight);
     return cellheight;
-    }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     

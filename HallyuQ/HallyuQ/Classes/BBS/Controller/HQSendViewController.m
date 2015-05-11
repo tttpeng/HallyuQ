@@ -131,7 +131,6 @@
     UIImage *image = self.imageView.image;
     NSData *imagedate = UIImagePNGRepresentation(image);
     NSString *base64image = [imagedate base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-     //NSLog(@"%@...................",self.soundPath);
     NSData *dataSound = [NSData dataWithContentsOfFile:self.soundPath];
     NSString *soundString = [dataSound base64EncodedStringWithOptions:0];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,8 +11,8 @@
             <rect key="frame" x="0.0" y="0.0" width="309" height="46"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXE-vN-ukf">
-                    <rect key="frame" x="0.0" y="5" width="77.5" height="36"/>
+                <button opaque="NO" tag="200" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXE-vN-ukf">
+                    <rect key="frame" x="0.0" y="5" width="78" height="36"/>
                     <color key="backgroundColor" red="1" green="0.95345165750000005" blue="0.63508419380000003" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" image="发表-添加菜单-表情-press">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -21,7 +21,7 @@
                         <action selector="buttonClicked:" destination="5VO-CZ-DZ6" eventType="touchUpInside" id="Mdx-Xk-zN6"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rV2-j0-fMY">
+                <button opaque="NO" tag="201" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rV2-j0-fMY">
                     <rect key="frame" x="77" y="5" width="77" height="36"/>
                     <color key="backgroundColor" red="0.34189728289999999" green="0.99377083619999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" image="发表-添加菜单-图片-press">
@@ -39,8 +39,8 @@
                         <action selector="buttonClicked:" destination="5VO-CZ-DZ6" eventType="touchUpInside" id="Ti6-L3-OS1"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0A6-nu-2hO">
-                    <rect key="frame" x="154" y="5" width="77.5" height="36"/>
+                <button opaque="NO" tag="202" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0A6-nu-2hO">
+                    <rect key="frame" x="154" y="5" width="78" height="36"/>
                     <color key="backgroundColor" red="0.45796535789999998" green="1" blue="0.41479324410000001" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" image="发表-添加菜单-语音-press">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

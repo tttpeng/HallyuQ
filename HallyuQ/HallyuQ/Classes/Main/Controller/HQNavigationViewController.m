@@ -18,7 +18,7 @@
 
 + (void)initialize
 {   UINavigationBar *bar = [UINavigationBar appearance];
-    [bar setBackgroundImage:[UIImage imageNamed:@"square_publish_nav_bg"] forBarMetrics:UIBarMetricsDefault];
+    [bar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
     bar.tintColor = [UIColor whiteColor];
     UIBarButtonItem *item = [UIBarButtonItem appearance];
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
