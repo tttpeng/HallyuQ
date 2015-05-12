@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 @class HQPost;
-@interface HQPostDetailViewController : UITableViewController
+@interface HQPostDetailViewController : UIViewController
 @property (nonatomic,strong) HQPost *post;
 @end

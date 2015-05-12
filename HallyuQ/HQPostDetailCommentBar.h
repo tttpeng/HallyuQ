@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HQPostDetailCommentBar : UIView
-
+-(instancetype)initWithFrame:(CGRect)frame;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIButton *keyButton;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @end

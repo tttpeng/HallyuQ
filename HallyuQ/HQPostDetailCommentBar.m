@@ -10,4 +10,12 @@
 
 @implementation HQPostDetailCommentBar
 
+-(instancetype)initWithFrame:(CGRect)frame
+{
+	if (self = [super initWithFrame:frame]) {
+		self = [[NSBundle mainBundle] loadNibNamed:@"HQPostDetailCommentBar" owner:nil options:nil][0];
+	}
+	return self;
+}
+
 @end

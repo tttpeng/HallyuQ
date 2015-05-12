@@ -17,12 +17,15 @@
 #import "HQPostDetailToolBar.h"
 #import "MGSwipeTableCell.h"
 #import "MGSwipeButton.h"
+#import "HQPostDetailCommentBar.h"
 #import <ShareSDK/ShareSDK.h>
-@interface HQPostDetailViewController ()<HQPostDetailToolBar,UITextFieldDelegate>
+@interface HQPostDetailViewController ()<HQPostDetailToolBar,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) NSMutableArray *commentArray;
 @property (nonatomic,strong) HQPostDetailToolBar *toolBar;
 @property (nonatomic,assign) NSInteger currentNum;
+@property (nonatomic,weak) UITableView *tableView;
+@property (nonatomic,weak)HQPostDetailCommentBar *commentBar;
 
 @end
 
@@ -31,8 +34,8 @@
 -(instancetype)init{ 
     if (self = [super init]) {
         self.navigationItem.title = @"详情";
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"菜单" style:UIBarButtonItemStyleDone target:self action:@selector(listMenu)];
         self.navigationController.navigationBarHidden = NO;
+
     }
     return self;
 }
@@ -45,10 +48,23 @@
     return _commentArray;
 }
 - (void)viewDidLoad {
+	UITableView *tableView = [[UITableView alloc] init];
+	tableView.frame = self.view.bounds;
+	tableView.delegate = self;
+	tableView.dataSource = self;
+	[self.view addSubview:tableView];
+	self.tableView = tableView;
+	self.edgesForExtendedLayout = UIRectEdgeAll;
+	self.extendedLayoutIncludesOpaqueBars = YES;
+	self.automaticallyAdjustsScrollViewInsets = NO;
+
+	
     [super viewDidLoad];
     [self setCommentPost];
     [self setHeaderView];
-    [self setToolbar];
+	[self setCommentBar];
+	[self setToolbar];
+
 
 }
 
@@ -82,23 +98,49 @@
     self.tableView.tableFooterView = footerView;
 }
 
+- (void)setCommentBar
+{
+	HQPostDetailCommentBar *commentBar = [[HQPostDetailCommentBar alloc] init];
+	commentBar.frame = CGRectMake(0, kScreenHeight - 47, kScreenWidth, 47);
+	[self.view addSubview:commentBar];
+	self.commentBar = commentBar;
+
+	
+}
+
 - (void)setToolbar
 {
     HQPostDetailToolBar *toolbar = [[HQPostDetailToolBar alloc] init];
-    self.navigationController.toolbarHidden = NO;
-    toolbar.frame = CGRectMake(0, 0, self.view.width, 44);
+    toolbar.frame = CGRectMake(0, kScreenHeight - 47, self.view.width, 47);
     self.currentNum = self.post.zan_num;
-    
-    
+	
+	[toolbar.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
     [toolbar.favoriteButton addTarget:self action:@selector(zanButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [toolbar.favoriteButton setTitle:[NSString stringWithFormat:@"%ld",(long)self.currentNum] forState:UIControlStateNormal];
-    [self.navigationController.toolbar insertSubview:toolbar aboveSubview:self.navigationController.view];
+	[self.view addSubview:toolbar];
     toolbar.delegate = self;
     self.toolBar = toolbar;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+- (void)keyboardWillChangeFrame:(NSNotification *)note
+{
+	CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+	
+	CGRect keyboardFrame =  [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+	
+	CGFloat transfromY = keyboardFrame.origin.y - self.view.frame.size.height;
+	
+	[UIView animateWithDuration:duration  animations:^{
+		self.commentBar.transform = CGAffineTransformMakeTranslation(0, transfromY);
+	}];
+}
+- (void)commentButtonClick:(UIButton *)button
+{
+	[self.commentBar.textView becomeFirstResponder];
+	
 }
 
 - (void)zanButtonClick:(UIButton *)button
@@ -137,9 +179,11 @@
 {
     
     CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+	NSLog(@"------>%@",NSStringFromCGRect(self.commentBar.frame));
     [UIView animateWithDuration:duration animations:^{
         CGRect keyboardFrame = [note.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-        self.toolBar.transform = CGAffineTransformMakeTranslation(0, -keyboardFrame.size.height);
+		NSLog(@"----->%@",NSStringFromCGRect(keyboardFrame));
+        self.commentBar.transform = CGAffineTransformMakeTranslation(0, - keyboardFrame.size.height);
     }];
 }
 
@@ -157,7 +201,7 @@
 {
     //跟帖列表
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        //NSLog(@"%@//////////////",self.post.ID);
+        NSLog(@"%@//////////////",self.post);
         NSDictionary *parameters = @{@"bbs_id":self.post.ID};
         [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/posts/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"json: %@", responseObject);
