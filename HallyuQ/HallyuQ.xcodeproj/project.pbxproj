@@ -36,6 +36,8 @@
 		50FF86951ACACBFE009A6C79 /* HQNewsDetailToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50FF86941ACACBFE009A6C79 /* HQNewsDetailToolBar.xib */; };
 		7073A74E1AF14DFE00008BFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC3C1F681ACAE977004DF560 /* Images.xcassets */; };
 		756E3D0D99469C30AE3F7171 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3990EA51FA871F6C5BE44F /* libPods.a */; };
+		775B53E61B02040F0062051E /* HQPostDetailCommentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 775B53E51B02040F0062051E /* HQPostDetailCommentBar.m */; };
+		775B53E81B02042D0062051E /* HQPostDetailCommentBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775B53E71B02042D0062051E /* HQPostDetailCommentBar.xib */; };
 		CC07E1F21AC595DA00179DD1 /* ZYStarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD2231AC5002400F97A89 /* ZYStarViewController.m */; };
 		CC07E1F31AC595F500179DD1 /* ThemeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD21C1AC4FEAE00F97A89 /* ThemeBar.m */; };
 		CC07E1F41AC6497800179DD1 /* HQBaseBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3B2A5B1AC5A60B00FF4B34 /* HQBaseBarView.m */; };
@@ -206,6 +208,9 @@
 		50FF86911ACAA03A009A6C79 /* HQNewsDetailToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQNewsDetailToolBar.h; sourceTree = "<group>"; };
 		50FF86921ACAA03A009A6C79 /* HQNewsDetailToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQNewsDetailToolBar.m; sourceTree = "<group>"; };
 		50FF86941ACACBFE009A6C79 /* HQNewsDetailToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HQNewsDetailToolBar.xib; sourceTree = "<group>"; };
+		775B53E41B02040F0062051E /* HQPostDetailCommentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQPostDetailCommentBar.h; sourceTree = SOURCE_ROOT; };
+		775B53E51B02040F0062051E /* HQPostDetailCommentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQPostDetailCommentBar.m; sourceTree = SOURCE_ROOT; };
+		775B53E71B02042D0062051E /* HQPostDetailCommentBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HQPostDetailCommentBar.xib; sourceTree = SOURCE_ROOT; };
 		7FDA8D0AF5DCFC83E8B5FDED /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CC07E1F51AC680A700179DD1 /* HQPostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQPostDetailViewController.h; sourceTree = "<group>"; };
 		CC07E1F61AC680A700179DD1 /* HQPostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQPostDetailViewController.m; sourceTree = "<group>"; };
@@ -842,6 +847,9 @@
 				CC204A991AC94E6000351039 /* HQPostDetailToolBar.h */,
 				CC204A9A1AC94E6000351039 /* HQPostDetailToolBar.m */,
 				CC204A9C1AC94E8F00351039 /* HQPostDetailToolBar.xib */,
+				775B53E41B02040F0062051E /* HQPostDetailCommentBar.h */,
+				775B53E51B02040F0062051E /* HQPostDetailCommentBar.m */,
+				775B53E71B02042D0062051E /* HQPostDetailCommentBar.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1163,6 +1171,7 @@
 				CC3B2A5E1AC5A62E00FF4B34 /* HQBaseBarView.xib in Resources */,
 				CCE7A15A1AD183E4003D79BF /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				CC5AFCC91AD1882A00751DED /* HQNothingCell.xib in Resources */,
+				775B53E81B02042D0062051E /* HQPostDetailCommentBar.xib in Resources */,
 				CC6394661ACCE69100BA0269 /* HQAddFansViewController.xib in Resources */,
 				CC5ABD621AC45667000AD370 /* HQLoginViewController.xib in Resources */,
 				50485FBE1ACD3B42002332AF /* HQNewsDetailHeaderView.xib in Resources */,
@@ -1246,6 +1255,7 @@
 				CC6D443D1AC58DBD00AF55B0 /* (null) in Sources */,
 				50BF26B51ACD72B9000382D6 /* HQNewsComment.m in Sources */,
 				CC6D44391AC58DAC00AF55B0 /* ZYHomeViewController.m in Sources */,
+				775B53E61B02040F0062051E /* HQPostDetailCommentBar.m in Sources */,
 				50A42DD11ACD615100714626 /* HQNewsCommnetCell.m in Sources */,
 				CC6D443A1AC58DAC00AF55B0 /* ZYMovieViewController.m in Sources */,
 				CC3B2A611AC5AB1300FF4B34 /* HQMoreBaseViewController.m in Sources */,

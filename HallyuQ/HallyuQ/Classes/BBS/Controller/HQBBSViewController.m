@@ -18,6 +18,8 @@
 #import <MJRefresh.h>
 #import "HQAddFansViewController.h"
 #import "HQUser.h"
+#import "MBProgressHUD+MJ.h"
+#import "HQSendViewController.h"
 
 @interface HQBBSViewController ()<UIScrollViewDelegate,HQPostCellDelegate>
 
@@ -62,26 +64,20 @@
     
     if (self.postsArray.count != 0) {
         HQPost *post = [self.postsArray firstObject];
-        parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"since_id":post.ID, @"refresh":@"1"}];
+        parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"max_id":post.ID, @"refresh":@"1"}];
     }else
     {
         parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"max_id":@"0",@"refresh":@"1"}];
     }
-    // 设置请求格式
-    // manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    // 设置返回格式
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSLog(@"---->>>>>%@",parameters);
     [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/thread/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"JSON: %@", responseObject);
         NSArray *postArray = [HQPost objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        //NSLog(@"%@]]]]]]]]]]]]]]]]]",postArray);
         NSMutableArray *tempArray = [NSMutableArray arrayWithArray:postArray];
         if (self.postsArray.count != 0) {
             [tempArray addObjectsFromArray:self.postsArray];
         }
         self.postsArray = tempArray;
-        //NSDictionary *dataDic = responseObject[@"data"];
-        //HQUser *user = [HQUser objectWithKeyValues:dataDic[@"user"]];
         [self.tableView.legendHeader endRefreshing];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -96,23 +92,14 @@
     NSMutableDictionary *parameters;
     if (self.postsArray.count != 0) {
         HQPost *post = [self.postsArray lastObject];
-        //        NSInteger maxID = [post.ID integerValue] -1;
         parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"since_id":post.ID,@"refresh":@"2"}];
-        
         if ([post.ID integerValue] > 157) {
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-            //NSDictionary *parameters = @{@"max_id":post.ID, @"refresh":@"1"};
-            // 设置请求格式
-            //manager.requestSerializer = [AFJSONRequestSerializer serializer];
-            // 设置返回格式
             manager.responseSerializer = [AFJSONResponseSerializer serializer];
             [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/thread/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"JSON: %@", responseObject);
                 NSArray *postArray = [HQPost objectArrayWithKeyValuesArray:responseObject[@"data"]];
-                //NSLog(@"%@]]]]]]]]]]]]]]]]]",postArray);
                 [self.postsArray addObjectsFromArray:postArray];
-                //NSDictionary *dataDic = responseObject[@"data"];
-                //HQUser *user = [HQUser objectWithKeyValues:dataDic[@"user"]];
                 [self.tableView.legendFooter endRefreshing];
                 
                 [self.tableView reloadData];
@@ -145,46 +132,22 @@
     self.navigationController.toolbarHidden = YES;
 }
 
-//- (void)setData
-//{
-////    获取bbs列表
-//        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    NSDictionary *parameters = @{@"max_id":@"0", @"refresh":@"1"};
-//        // 设置请求格式
-//       // manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//        // 设置返回格式
-//        manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/thread/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//            NSLog(@"JSON: %@", responseObject);
-//        NSArray *postArray = [HQPost objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        //NSLog(@"%@]]]]]]]]]]]]]]]]]",postArray);
-//        [self.postsArray addObjectsFromArray:postArray];
-//        //NSDictionary *dataDic = responseObject[@"data"];
-//        //HQUser *user = [HQUser objectWithKeyValues:dataDic[@"user"]];
-//        [self.tableView reloadData];
-//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//            NSLog(@"Error: %@", error);
-//        }];
-//
-//
-//}
-
-
+#pragma mark -
+#pragma 发帖按钮事件
 
 - (void)rightBarButtonItemClick
 {
-    HQPostController *postVC = [[HQPostController alloc] init];
-    [self.navigationController pushViewController:postVC animated:NO];
-    postVC.navigationController.navigationBarHidden = YES;
-    //[self presentViewController:postVC animated:YES completion:nil];
-    
+    if ([HQUser currentUser]) {
+        HQSendViewController *sendThreadVc = [[HQSendViewController alloc] init];
+        [self.navigationController pushViewController:sendThreadVc animated:NO];
+    }else
+    {
+        [MBProgressHUD showError:@"请先登录~~"];
+        
+    }
 }
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
-}
+#pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
@@ -207,7 +170,6 @@
     cell.post = self.postsArray[indexPath.row];
     cell.delegate = self;
     return cell;
-    
 }
 
 
@@ -220,19 +182,10 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    HQPost *post = self.postsArray[indexPath.row];
-    if ([post.sound_url containsString:@".aac"]) {
-        HQRecordViewController *reVC = [[HQRecordViewController alloc] init];
-        reVC.urlStr = post.sound_url;
-        [self presentViewController:reVC animated:YES completion:nil];
-        
-    }else
-    {
-        HQPostDetailViewController *detailVC = [[HQPostDetailViewController alloc] init];
-        detailVC.post = self.postsArray[indexPath.row];
-        self.navigationItem.title = @"正文";
-        [self.navigationController pushViewController:detailVC animated:YES];
-    }
+    HQPostDetailViewController *detailVC = [[HQPostDetailViewController alloc] init];
+    detailVC.post = self.postsArray[indexPath.row];
+    self.navigationItem.title = @"正文";
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 

@@ -33,7 +33,7 @@
     self.titleLabel.text = post.titile;
     self.contentLabel.text = post.content;
     if ([post.user.gender integerValue] == 1) {
-        [self.sexButton setImage:[UIImage imageNamed:@"icon_chat_boy"] forState:UIControlStateNormal];
+        [self.sexButton setImage:[UIImage imageNamed:@"cent_icon_boy_n"] forState:UIControlStateNormal];
     }else if([post.user.gender integerValue] == 0)
     {
         [self.sexButton setImage:[UIImage imageNamed:@"cent_icon_girl_n"] forState:UIControlStateNormal];

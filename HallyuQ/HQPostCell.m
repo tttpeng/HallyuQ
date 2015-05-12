@@ -27,13 +27,13 @@
         cell = [[HQPostCell alloc] init];
         cell = [[NSBundle mainBundle] loadNibNamed:@"HQPostCell" owner:nil options:nil][0];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.baseView.layer.borderColor = [UIColor colorWithWhite:0.785 alpha:1.000].CGColor;
-        cell.baseView.layer.borderWidth = 1;
-        cell.baseView.layer.cornerRadius = 3;
+//        cell.baseView.layer.borderColor = [UIColor colorWithWhite:0.785 alpha:1.000].CGColor;
+//        cell.baseView.layer.borderWidth = 1;
+//        cell.baseView.layer.cornerRadius = 3;
         
-        cell.iconImage.layer.cornerRadius = 3;
+        cell.iconImage.layer.cornerRadius = cell.iconImage.width * 0.5;
         cell.iconImage.layer.masksToBounds = YES;
-        
+        [UIColor redColor];
     }
     return cell;
 }
@@ -75,38 +75,7 @@
     HQUser *user = post.user;
     //NSLog(@"%@===================",user.profile_image_url);
     [self.iconImage sd_setImageWithURL:[NSURL URLWithString:user.icon_url] placeholderImage:nil];
-    
-    if ([post.sound_url containsString:@".aac"]) {
-         //[self.recordView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-        
-        UIButton *playButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 150, 30)];
-        [playButton setImage:[UIImage imageNamed:@"icon_sounds3_n"] forState:UIControlStateNormal];
-        [playButton setBackgroundImage:[UIImage imageNamed:@"bg_btn_reply"] forState:UIControlStateNormal];
-        [playButton setTag:300];
-        if (playButton.selected) {
-            [self animation:playButton];
-        }
-        
-        playButton.layer.cornerRadius = 3;
-        playButton.layer.masksToBounds = YES;
-        playButton.backgroundColor = [UIColor orangeColor];
-        playButton.userInteractionEnabled = YES;
-        for (NSLayoutConstraint *constraint in self.recordView.constraints) {
-            if(constraint.firstAttribute == NSLayoutAttributeHeight){
-                constraint.constant = 30;
-            }
-        }
-        [self.recordView addSubview:playButton];
-         self.playButton = playButton;
-       }else
-       {
-           for (NSLayoutConstraint *constraint in self.recordView.constraints) {
-               if(constraint.firstAttribute == NSLayoutAttributeHeight){
-                   constraint.constant = 0;
-               }
-           }
-       }
-    NSArray *subViews1 = self.pictureView.subviews;
+      NSArray *subViews1 = self.pictureView.subviews;
     for (UIView *subView in subViews1) {
         [subView removeFromSuperview];
     }
@@ -120,7 +89,7 @@
         [imageView sd_setImageWithURL:[NSURL URLWithString:post.image] placeholderImage:nil];
         for (NSLayoutConstraint *constraint in self.pictureView.constraints) {
             if(constraint.firstAttribute == NSLayoutAttributeHeight){
-                constraint.constant = 150;
+                constraint.constant = 100;
             }
         }
         [self.pictureView addSubview:imageView];
@@ -151,11 +120,8 @@
     self.titleLable.preferredMaxLayoutWidth = self.width - 40;
     self.contentLable.text = post.content;
     self.contentLable.preferredMaxLayoutWidth = self.width - 40;
-    if (post.sound_url.length > 44) {
-        cellHeight += 30;
-    }
     if (post.image.length > 44) {
-        cellHeight += 150;
+        cellHeight += 100;
     }
     CGSize cellSize = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     cellHeight += cellSize.height;

@@ -16,11 +16,10 @@
 
 @end
 @interface HQPostDetailToolBar : UIView
-@property (weak, nonatomic) IBOutlet UIButton *likeButton;
-@property (weak, nonatomic) IBOutlet UITextField *commentText;
-@property (weak, nonatomic) IBOutlet UIButton *shareButton;
-@property (weak, nonatomic) IBOutlet UIButton *storeButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (nonatomic,weak) id<HQPostDetailToolBar> delegate;
 
 @end

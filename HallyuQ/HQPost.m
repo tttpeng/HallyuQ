@@ -18,4 +18,9 @@
     }
     return propertyName;
 }
+
+- (NSString *)date
+{
+    return @"一个月前";
+}
 @end

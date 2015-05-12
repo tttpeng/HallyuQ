@@ -11,12 +11,14 @@
 #import "HQNavigationViewController.h"
 #import "HQTextView.h"
 #import "HQSendToolBar.h"
+#import "HQUser.h"
 #import "HQRecordViewController.h"
 #import <AFNetworking.h>
-@interface HQSendViewController ()<HQSendToolBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-@property (nonatomic,strong) HQTextView *sendView;
+@interface HQSendViewController ()<HQSendToolBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate,UIAlertViewDelegate>
+@property (nonatomic,strong) HQTextView  *sendView;
 @property (nonatomic,strong) UITextField *titleView;
-@property (nonatomic,strong) NSString *soundPath;
+@property (nonatomic,strong) NSString    *soundPath;
+@property (nonatomic,weak  ) UIButton    *deletaButton;
 
 @end
 
@@ -37,60 +39,64 @@
     [self setImage];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = NO;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setSound) name:@"recordEnd" object:nil];
 
 }
 -(void)setImage
 {
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(5, 80, 60, 60);
+    imageView.frame = CGRectMake(5, 100, 80, 80);
     [self.sendView addSubview:imageView];
     self.imageView = imageView;
     
+    UIButton *button = [[UIButton alloc] init];
+    button.width  = 20;
+    button.height = 20;
+    button.center = CGPointMake(85, 100);
+    button.hidden = YES;
+    [button setImage:[UIImage imageNamed:@"发表-缩略图-删除"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(deleteImage) forControlEvents:UIControlEventTouchUpInside];
+    self.deletaButton = button;
+    [self.sendView addSubview:button];
+    
+
 }
 
-
-- (void)setSound
+- (void)deleteImage
 {
-    if (!_soundPath) {
-        NSString *pathDoc = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        NSString *filePath = [pathDoc stringByAppendingPathComponent:@"record.aac"];
-        _soundPath = [NSString stringWithString:filePath];
-        
-    }
-    return;
+    self.imageView.image = nil;
+    self.deletaButton.hidden = YES;
 }
+
 - (void)setTextView
 {
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 0, 40, 30)];
-    titleLabel.font = [UIFont systemFontOfSize:15];
-    titleLabel.text = @"标题:";
-    [self.view addSubview:titleLabel];
     //输入标题框
-    UITextField *titleView = [[UITextField alloc] initWithFrame:CGRectMake(40, 0, self.view.width-40, 30)];
-    titleView.font = [UIFont systemFontOfSize:15];
-    self.titleView = titleView;
+    UITextField *titleView = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.view.width - 20, 45)];
+    titleView.placeholder = @"还没有写标题！";
+    titleView.font        = [UIFont systemFontOfSize:17];
+    self.titleView        = titleView;
     [self.view addSubview:self.titleView];
     
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(6, 30, self.view.width-12, 3)];
-    lineView.backgroundColor = [UIColor lightGrayColor];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 45, self.view.width, 1)];
+    lineView.backgroundColor = [UIColor colorWithWhite:0.867 alpha:1.000];
     [self.view addSubview:lineView];
     
     //发表内容文本框
-    HQTextView *textView = [[HQTextView alloc] init];
+    HQTextView *textView          = [[HQTextView alloc] init];
     textView.alwaysBounceVertical = YES;
-    textView.placeholder = @"吐槽一下吧...";
-    textView.font = [UIFont systemFontOfSize:15];
-    CGFloat textH = self.view.height - 2*(CGRectGetMaxY(self.titleView.frame)+64);
-    //NSLog(@"%F]]]]]]]]]]]]]]]]]%F,%f",textH,self.view.height,self.view.height -textH);
-    textView.frame = CGRectMake(6, CGRectGetMaxY(self.titleView.frame)+8, self.view.width-12,textH);
-    self.sendView = textView;
+    textView.placeholder          = @"请输入帖子内容！";
+    textView.font                 = [UIFont systemFontOfSize:17];
+    CGFloat textH                 = self.view.height - 2 * (CGRectGetMaxY(self.titleView.frame)+64);
+    textView.frame                = CGRectMake(6,
+                                               CGRectGetMaxY(self.titleView.frame)+8,
+                                               self.view.width - 12,textH);
+    textView.backgroundColor      = [UIColor whiteColor];
+    textView.delegate = self;
+    self.sendView                 = textView;
     [self.view addSubview:self.sendView];
     //设置toolBar
     HQSendToolBar *toolBar = [[NSBundle mainBundle] loadNibNamed:@"HQSendToolBar" owner:nil options:nil][0];
     toolBar.frame = CGRectMake(0, 0, self.view.width, 37);
-    //NSLog(@"%ld++++++++++++++",toolBar.subviews.count);
     self.sendView.inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 37)];
     toolBar.backgroundColor = [UIColor whiteColor];
     toolBar.delegate = self;
@@ -113,9 +119,10 @@
 
 - (void)quitSend
 {
-
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退出编辑" message:@"退出后帖子内容将丢失，是否退出？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
 }
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -123,21 +130,37 @@
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self.titleView endEditing:YES ];
+    [self.view endEditing:YES];
 }
 
 - (void)send
 {
+    
+    if (self.titleView.text.length == 0) {
+        [MBProgressHUD showError:@"请输入标题"];
+        return;
+    }
+    if (self.sendView.text.length == 0) {
+        [MBProgressHUD showError:@"请输入帖子内容"];
+        return;
+    }
+    
     UIImage *image = self.imageView.image;
-    NSData *imagedate = UIImagePNGRepresentation(image);
-    NSString *base64image = [imagedate base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSData *dataSound = [NSData dataWithContentsOfFile:self.soundPath];
-    NSString *soundString = [dataSound base64EncodedStringWithOptions:0];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"userid": [HQUser currentUser].user_id, @"title":self.titleView.text, @"content":self.sendView.text}];
+    if (image) {
+        NSData *imagedate = UIImagePNGRepresentation(image);
+        NSString *base64image = [imagedate base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        [params setValue:base64image forKey:@"image"];
+    }
+    [MBProgressHUD showMessage:@"正在发表请稍后"];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        NSDictionary *parameters = @{@"userid": @"149", @"title":self.titleView.text, @"content":self.sendView.text,@"image":base64image,@"sound":soundString};
-        [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/addthread/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/addthread/" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"JSON: %@", responseObject);
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showSuccess:@"发表成功"];
+            [self.navigationController popViewControllerAnimated:YES];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [MBProgressHUD hideHUD];
             NSLog(@"Error: %@", error);
         }];
 
@@ -151,9 +174,6 @@
 - (void)toolBar:(HQSendToolBar *)toolbar didClickedButton:(UIButton *)button
 {
     switch (button.tag) {
-        case 200:
-            [self openEmoj];
-            break;
         case 201:
             [self openPicture];
             break;
@@ -166,11 +186,6 @@
         default:
             break;
     }
-}
-
-- (void)openEmoj
-{
-    
 }
 
 - (void)openPicture
@@ -199,6 +214,7 @@
 {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     self.imageView.image = image;
+    self.deletaButton.hidden = NO;
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
@@ -206,14 +222,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
-
 @end

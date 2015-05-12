@@ -52,11 +52,6 @@
 
 }
 
-- (void)listMenu
-{
-    
-}
-
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
@@ -69,6 +64,12 @@
 }
 
 
+- (void)setToolbarNum
+{
+    int commentNUm = (int)self.commentArray.count;
+    [self.toolBar.commentButton setTitle:[NSString stringWithFormat:@"%ld",(long)commentNUm] forState:UIControlStateNormal];
+}
+
 - (void)setHeaderView
 {
     HQPostDetailHeaderView *headerView = [[HQPostDetailHeaderView alloc]init];
@@ -77,21 +78,21 @@
     CGFloat headerHeight = [headerView headerHeightWithPost:self.post];
     headerView.height = headerHeight ;
     self.tableView.tableHeaderView = headerView;
+    UIView *footerView = [UIView new];
+    self.tableView.tableFooterView = footerView;
 }
 
 - (void)setToolbar
 {
-    
-    //CGFloat toolBarY = self.view.height - 44;
     HQPostDetailToolBar *toolbar = [[HQPostDetailToolBar alloc] init];
     self.navigationController.toolbarHidden = NO;
     toolbar.frame = CGRectMake(0, 0, self.view.width, 44);
-    if (self.post.zan_num > 999) {
-        NSString *zanStr = @"999+";
-        [toolbar.likeButton setTitle:zanStr forState:UIControlStateNormal];
-    }
-    [toolbar.likeButton setTitle:[NSString stringWithFormat:@"%ld",self.post.zan_num] forState:UIControlStateNormal];
     self.currentNum = self.post.zan_num;
+    
+    
+    [toolbar.favoriteButton addTarget:self action:@selector(zanButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [toolbar.favoriteButton setTitle:[NSString stringWithFormat:@"%ld",(long)self.currentNum] forState:UIControlStateNormal];
     [self.navigationController.toolbar insertSubview:toolbar aboveSubview:self.navigationController.view];
     toolbar.delegate = self;
     self.toolBar = toolbar;
@@ -100,9 +101,40 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void)zanButtonClick:(UIButton *)button
+{
+    
+    HQUser *user = [HQUser currentUser];
+    
+    if (user) {
+        if (!button.selected) {
+            button.selected = YES;
+            int zanNum =   [button.titleLabel.text intValue];
+            self.post.zan_num += 1;
+            [button setTitle:[NSString stringWithFormat:@"%d",zanNum + 1] forState:UIControlStateNormal];
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            NSDictionary *parameters = @{@"message_id":self.post.ID,@"type":@"3"};
+            [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/favor/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"json: %@", responseObject);
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Error: %@", error);
+            }];
+        }else
+        {
+            return;
+        }
+    }else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"亲~还没有登陆哟~" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+
+    
+}
+
 - (void)keyboardWillShow:(NSNotification *)note
 {
-   // NSLog(@"%@kkkkkkkkkkk",note.userInfo);
     
     CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
     [UIView animateWithDuration:duration animations:^{
@@ -132,6 +164,7 @@
             NSArray *comArrary = [HQComment objectArrayWithKeyValuesArray:responseObject[@"data"]];
             [self.commentArray addObjectsFromArray:comArrary];
             [self.tableView reloadData];
+            [self setToolbarNum];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
@@ -140,17 +173,6 @@
 
 #pragma mark - textField delegate
 
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    [self.toolBar.commentText becomeFirstResponder];
-    return YES;
-}
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [self.toolBar.commentText resignFirstResponder];
-    return YES;
-}
 
 #pragma mark - toolbar delegate
 
@@ -177,7 +199,6 @@
    // self.currentNum++;
     HQUser *user = [HQUser currentUser];
     if (user) {
-       [self.toolBar.likeButton setTitle:[NSString stringWithFormat:@"%ld",self.currentNum +1] forState:UIControlStateNormal];
        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
       //NSLog(@"%@//////////////",self.post.ID);
        NSDictionary *parameters = @{@"bbs_id":self.post.ID,@"type":@"2"};

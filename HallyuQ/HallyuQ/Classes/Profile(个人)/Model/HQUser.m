@@ -16,17 +16,7 @@
 + (instancetype)currentUser
 {
     static HQUser *currentUser;
-        currentUser = [NSKeyedUnarchiver unarchiveObjectWithFile:HQAccountPath];
-
-//    static dispatch_once_t pred;
-//    dispatch_once(&pred, ^{
-//        if ([NSKeyedUnarchiver unarchiveObjectWithFile:HQAccountPath]) {
-//            //        }else
-//        {
-//            currentUser = [[self alloc] init];
-//        }
-//        
-//    });
+    currentUser = [NSKeyedUnarchiver unarchiveObjectWithFile:HQAccountPath];
     return currentUser;
 }
 
