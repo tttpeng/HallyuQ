@@ -13,7 +13,6 @@
 		50498B4A1AC956D400CA2B27 /* HQNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50498B491AC956D400CA2B27 /* HQNewsDetailViewController.m */; };
 		504C247E1AC7FD1B00AD6AE2 /* HQHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C247C1AC7FD1B00AD6AE2 /* HQHeaderCell.m */; };
 		504C247F1AC7FD1B00AD6AE2 /* HQHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 504C247D1AC7FD1B00AD6AE2 /* HQHeaderCell.xib */; };
-		505AD2301AC5019400F97A89 /* ZYThemeNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD22F1AC5019400F97A89 /* ZYThemeNavViewController.m */; };
 		505AD23D1AC5766700F97A89 /* ZYHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD23C1AC5766700F97A89 /* ZYHttpTool.m */; };
 		505AD2411AC5885200F97A89 /* HQHomeHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD23F1AC5885200F97A89 /* HQHomeHeaderCell.m */; };
 		505AD2421AC5885200F97A89 /* HQHomeHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 505AD2401AC5885200F97A89 /* HQHomeHeaderCell.xib */; };
@@ -38,7 +37,6 @@
 		756E3D0D99469C30AE3F7171 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3990EA51FA871F6C5BE44F /* libPods.a */; };
 		775B53E61B02040F0062051E /* HQPostDetailCommentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 775B53E51B02040F0062051E /* HQPostDetailCommentBar.m */; };
 		775B53E81B02042D0062051E /* HQPostDetailCommentBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775B53E71B02042D0062051E /* HQPostDetailCommentBar.xib */; };
-		CC07E1F21AC595DA00179DD1 /* ZYStarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD2231AC5002400F97A89 /* ZYStarViewController.m */; };
 		CC07E1F31AC595F500179DD1 /* ThemeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD21C1AC4FEAE00F97A89 /* ThemeBar.m */; };
 		CC07E1F41AC6497800179DD1 /* HQBaseBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3B2A5B1AC5A60B00FF4B34 /* HQBaseBarView.m */; };
 		CC07E1F71AC680A700179DD1 /* HQPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC07E1F61AC680A700179DD1 /* HQPostDetailViewController.m */; };
@@ -85,10 +83,6 @@
 		CC63946B1ACD424100BA0269 /* HQFansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC6394691ACD424100BA0269 /* HQFansCell.xib */; };
 		CC63946E1ACD463100BA0269 /* HQFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC63946D1ACD463100BA0269 /* HQFansViewController.m */; };
 		CC6394711ACD72E400BA0269 /* HQFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6394701ACD72E400BA0269 /* HQFollowViewController.m */; };
-		CC6D44391AC58DAC00AF55B0 /* ZYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD2201AC5000700F97A89 /* ZYHomeViewController.m */; };
-		CC6D443A1AC58DAC00AF55B0 /* ZYMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD2261AC5008A00F97A89 /* ZYMovieViewController.m */; };
-		CC6D443B1AC58DAC00AF55B0 /* ZYArtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD2291AC500EB00F97A89 /* ZYArtsViewController.m */; };
-		CC6D443C1AC58DAC00AF55B0 /* ZYMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AD22C1AC5010600F97A89 /* ZYMusicViewController.m */; };
 		CC6D443D1AC58DBD00AF55B0 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		CC8146F81ACC230100428456 /* HQNothingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8146F71ACC230100428456 /* HQNothingView.m */; };
 		CC8146FC1ACC232400428456 /* HQNothingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8146FA1ACC232400428456 /* HQNothingCell.m */; };
@@ -165,18 +159,6 @@
 		504C247D1AC7FD1B00AD6AE2 /* HQHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HQHeaderCell.xib; sourceTree = "<group>"; };
 		505AD21B1AC4FEAE00F97A89 /* ThemeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeBar.h; sourceTree = "<group>"; };
 		505AD21C1AC4FEAE00F97A89 /* ThemeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeBar.m; sourceTree = "<group>"; };
-		505AD21F1AC5000700F97A89 /* ZYHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYHomeViewController.h; sourceTree = "<group>"; };
-		505AD2201AC5000700F97A89 /* ZYHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYHomeViewController.m; sourceTree = "<group>"; };
-		505AD2221AC5002400F97A89 /* ZYStarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYStarViewController.h; sourceTree = "<group>"; };
-		505AD2231AC5002400F97A89 /* ZYStarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYStarViewController.m; sourceTree = "<group>"; };
-		505AD2251AC5008A00F97A89 /* ZYMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYMovieViewController.h; sourceTree = "<group>"; };
-		505AD2261AC5008A00F97A89 /* ZYMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYMovieViewController.m; sourceTree = "<group>"; };
-		505AD2281AC500EB00F97A89 /* ZYArtsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYArtsViewController.h; sourceTree = "<group>"; };
-		505AD2291AC500EB00F97A89 /* ZYArtsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYArtsViewController.m; sourceTree = "<group>"; };
-		505AD22B1AC5010600F97A89 /* ZYMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYMusicViewController.h; sourceTree = "<group>"; };
-		505AD22C1AC5010600F97A89 /* ZYMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYMusicViewController.m; sourceTree = "<group>"; };
-		505AD22E1AC5019400F97A89 /* ZYThemeNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYThemeNavViewController.h; sourceTree = "<group>"; };
-		505AD22F1AC5019400F97A89 /* ZYThemeNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYThemeNavViewController.m; sourceTree = "<group>"; };
 		505AD23B1AC5766700F97A89 /* ZYHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYHttpTool.h; path = Tool/ZYHttpTool.h; sourceTree = "<group>"; };
 		505AD23C1AC5766700F97A89 /* ZYHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYHttpTool.m; path = Tool/ZYHttpTool.m; sourceTree = "<group>"; };
 		505AD23E1AC5885200F97A89 /* HQHomeHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQHomeHeaderCell.h; sourceTree = "<group>"; };
@@ -423,60 +405,8 @@
 			children = (
 				50751FF01AC45C9A00800E2B /* HQHomeViewController.h */,
 				50751FF11AC45C9A00800E2B /* HQHomeViewController.m */,
-				505AD22E1AC5019400F97A89 /* ZYThemeNavViewController.h */,
-				505AD22F1AC5019400F97A89 /* ZYThemeNavViewController.m */,
-				50485F6D1ACC399D002332AF /* 首页 */,
-				50485F6E1ACC39C1002332AF /* 明星 */,
-				50485F6F1ACC39D6002332AF /* 韩剧 */,
-				50485F701ACC39DD002332AF /* 综艺 */,
-				50485F711ACC39E7002332AF /* 音乐 */,
 			);
 			name = "主题刷选";
-			sourceTree = "<group>";
-		};
-		50485F6D1ACC399D002332AF /* 首页 */ = {
-			isa = PBXGroup;
-			children = (
-				505AD21F1AC5000700F97A89 /* ZYHomeViewController.h */,
-				505AD2201AC5000700F97A89 /* ZYHomeViewController.m */,
-			);
-			name = "首页";
-			sourceTree = "<group>";
-		};
-		50485F6E1ACC39C1002332AF /* 明星 */ = {
-			isa = PBXGroup;
-			children = (
-				505AD2221AC5002400F97A89 /* ZYStarViewController.h */,
-				505AD2231AC5002400F97A89 /* ZYStarViewController.m */,
-			);
-			name = "明星";
-			sourceTree = "<group>";
-		};
-		50485F6F1ACC39D6002332AF /* 韩剧 */ = {
-			isa = PBXGroup;
-			children = (
-				505AD2251AC5008A00F97A89 /* ZYMovieViewController.h */,
-				505AD2261AC5008A00F97A89 /* ZYMovieViewController.m */,
-			);
-			name = "韩剧";
-			sourceTree = "<group>";
-		};
-		50485F701ACC39DD002332AF /* 综艺 */ = {
-			isa = PBXGroup;
-			children = (
-				505AD2281AC500EB00F97A89 /* ZYArtsViewController.h */,
-				505AD2291AC500EB00F97A89 /* ZYArtsViewController.m */,
-			);
-			name = "综艺";
-			sourceTree = "<group>";
-		};
-		50485F711ACC39E7002332AF /* 音乐 */ = {
-			isa = PBXGroup;
-			children = (
-				505AD22B1AC5010600F97A89 /* ZYMusicViewController.h */,
-				505AD22C1AC5010600F97A89 /* ZYMusicViewController.m */,
-			);
-			name = "音乐";
 			sourceTree = "<group>";
 		};
 		50485F721ACC3A07002332AF /* 资讯详情 */ = {
@@ -1248,25 +1178,19 @@
 				50BF26BD1ACE5E35000382D6 /* HQAddFansViewController.m in Sources */,
 				CC07E1F41AC6497800179DD1 /* HQBaseBarView.m in Sources */,
 				CC07E1F31AC595F500179DD1 /* ThemeBar.m in Sources */,
-				CC07E1F21AC595DA00179DD1 /* ZYStarViewController.m in Sources */,
 				CC6D443D1AC58DBD00AF55B0 /* (null) in Sources */,
 				CC8146FC1ACC232400428456 /* HQNothingCell.m in Sources */,
 				505E6AF31AD12FA5009523AA /* HQNewsCommentToolBar.m in Sources */,
 				CC6D443D1AC58DBD00AF55B0 /* (null) in Sources */,
 				50BF26B51ACD72B9000382D6 /* HQNewsComment.m in Sources */,
-				CC6D44391AC58DAC00AF55B0 /* ZYHomeViewController.m in Sources */,
 				775B53E61B02040F0062051E /* HQPostDetailCommentBar.m in Sources */,
 				50A42DD11ACD615100714626 /* HQNewsCommnetCell.m in Sources */,
-				CC6D443A1AC58DAC00AF55B0 /* ZYMovieViewController.m in Sources */,
 				CC3B2A611AC5AB1300FF4B34 /* HQMoreBaseViewController.m in Sources */,
 				CC07E2091AC6C89000179DD1 /* HQComment.m in Sources */,
-				CC6D443B1AC58DAC00AF55B0 /* ZYArtsViewController.m in Sources */,
 				CC63946E1ACD463100BA0269 /* HQFansViewController.m in Sources */,
-				CC6D443C1AC58DAC00AF55B0 /* ZYMusicViewController.m in Sources */,
 				50485FBC1ACD3B2E002332AF /* HQNewsDetailHeaderView.m in Sources */,
 				CC616B1C1ABAE79C00217614 /* HQTabbarViewController.m in Sources */,
 				CC3C1F661ACA4353004DF560 /* MGSwipeButton.m in Sources */,
-				505AD2301AC5019400F97A89 /* ZYThemeNavViewController.m in Sources */,
 				CCFEEC501ABED96100E62BC7 /* HQSendViewController.m in Sources */,
 				50751FF91AC45C9A00800E2B /* HQHomeViewController.m in Sources */,
 				505AD23D1AC5766700F97A89 /* ZYHttpTool.m in Sources */,

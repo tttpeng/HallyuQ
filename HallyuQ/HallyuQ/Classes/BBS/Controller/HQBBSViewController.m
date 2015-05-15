@@ -70,7 +70,6 @@
         parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"max_id":@"0",@"refresh":@"1"}];
     }
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    NSLog(@"---->>>>>%@",parameters);
     [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/thread/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *postArray = [HQPost objectArrayWithKeyValuesArray:responseObject[@"data"]];
         NSMutableArray *tempArray = [NSMutableArray arrayWithArray:postArray];
@@ -180,6 +179,7 @@
     CGFloat cellheight = [cell cellHeightWithPost:post];
     return cellheight;
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     HQPostDetailViewController *detailVC = [[HQPostDetailViewController alloc] init];

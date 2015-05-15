@@ -33,11 +33,11 @@
     
     
     
-    MBTwitterScroll *myTableView = [[MBTwitterScroll alloc]
-                                    initTableViewWithBackgound:[UIImage imageNamed:@"linyuer"]
-                                    avatarImage:[UIImage imageNamed:@"avatar"]                                    titleString:_user.nickname
-                                    subtitleString:@"EXO"
-                                    buttonTitle:@"关注"];
+    MBTwitterScroll *myTableView = [[MBTwitterScroll alloc] initTableViewWithBackgound:[UIImage imageNamed:@"linyuer"]
+                                                                           avatarImage:[UIImage imageNamed:@"avatar"]
+                                                                           titleString:_user.nickname
+                                                                        subtitleString:@"EXO"
+                                                                           buttonTitle:@"关注"];
     
     [myTableView.avatarImage  sd_setImageWithURL:[NSURL URLWithString:_user.icon_url]];
     myTableView.tableView.delegate = self;

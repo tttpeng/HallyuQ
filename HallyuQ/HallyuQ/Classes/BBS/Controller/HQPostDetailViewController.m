@@ -48,8 +48,11 @@
     return _commentArray;
 }
 - (void)viewDidLoad {
-	UITableView *tableView = [[UITableView alloc] init];
+    [super viewDidLoad];
+    UITableView *tableView = [[UITableView alloc] init];
 	tableView.frame = self.view.bounds;
+    tableView.height = kScreenHeight - 64 - 47;
+    tableView.y = 64;
 	tableView.delegate = self;
 	tableView.dataSource = self;
 	[self.view addSubview:tableView];
@@ -59,7 +62,6 @@
 	self.automaticallyAdjustsScrollViewInsets = NO;
 
 	
-    [super viewDidLoad];
     [self setCommentPost];
     [self setHeaderView];
 	[self setCommentBar];
@@ -103,11 +105,19 @@
 	HQPostDetailCommentBar *commentBar = [[HQPostDetailCommentBar alloc] init];
 	commentBar.frame = CGRectMake(0, kScreenHeight - 47, kScreenWidth, 47);
 	[self.view addSubview:commentBar];
+    [commentBar.sendButton addTarget:self action:@selector(sendThreadComment) forControlEvents:UIControlEventTouchUpInside];
+    [commentBar.keyButton addTarget:self action:@selector(keyboardDownClick) forControlEvents:UIControlEventTouchUpInside];
 	self.commentBar = commentBar;
 
 	
 }
 
+- (void)keyboardDownClick
+{
+    [self.view endEditing:YES];
+}
+
+//评论工具栏
 - (void)setToolbar
 {
     HQPostDetailToolBar *toolbar = [[HQPostDetailToolBar alloc] init];
@@ -125,6 +135,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
+
+//键盘改变通知
 - (void)keyboardWillChangeFrame:(NSNotification *)note
 {
 	CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -137,10 +149,41 @@
 		self.commentBar.transform = CGAffineTransformMakeTranslation(0, transfromY);
 	}];
 }
+
+
 - (void)commentButtonClick:(UIButton *)button
 {
 	[self.commentBar.textView becomeFirstResponder];
 	
+}
+
+- (void)sendThreadComment
+{
+    if ([HQUser currentUser]) {
+        if (self.commentBar.textView.text.length != 0) {
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            NSDictionary *params = @{@"userid"  : [HQUser currentUser].user_id,
+                                     @"bbs_id"  : self.post.ID,
+                                     @"content" : self.commentBar.textView.text};
+            [manager POST:@"http://hanliuq.sinaapp.com/hlq_api/addpost/"
+               parameters:params
+                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                
+                      self.commentBar.textView.text = nil;
+                      _commentArray = nil;
+                      [self setCommentPost];
+                      [MBProgressHUD showSuccess:@"评论发送成功"];
+                      [self.view endEditing:YES];
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                [MBProgressHUD showError:@"评论发送失败，请重试"];
+            }];
+        }
+    }
+    else{
+        [MBProgressHUD showError:@"请先登录~"];
+    }
+    
 }
 
 - (void)zanButtonClick:(UIButton *)button

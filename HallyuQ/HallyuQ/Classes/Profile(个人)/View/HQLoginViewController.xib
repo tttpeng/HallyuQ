@@ -25,10 +25,10 @@
                 <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BbV-xT-3up">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hanliuquan" translatesAutoresizingMaskIntoConstraints="NO" id="bpr-zo-kdu">
-                            <rect key="frame" x="142" y="15" width="91" height="127"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon60x60-2" translatesAutoresizingMaskIntoConstraints="NO" id="bpr-zo-kdu">
+                            <rect key="frame" x="124" y="15" width="127" height="127"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="bpr-zo-kdu" secondAttribute="height" multiplier="67:93" id="5FC-ZZ-Pg1"/>
+                                <constraint firstAttribute="width" secondItem="bpr-zo-kdu" secondAttribute="height" multiplier="67:67" id="5FC-ZZ-Pg1"/>
                                 <constraint firstAttribute="width" constant="91" id="6cF-12-WoM"/>
                                 <constraint firstAttribute="width" constant="100" id="Ecg-Ie-vow"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="67" id="Mvf-Ae-wZE"/>
@@ -118,12 +118,12 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ob-tX-OI0">
                             <rect key="frame" x="38" y="242" width="300" height="43"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.87843137979507446" blue="0.52941179275512695" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="9ob-tX-OI0" secondAttribute="height" multiplier="243:35" id="Mv3-yE-h0d"/>
                                 <constraint firstAttribute="height" constant="37" id="Ois-jN-q62"/>
                             </constraints>
-                            <state key="normal" backgroundImage="Login_Button">
+                            <state key="normal" title="登         录">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -192,12 +192,11 @@
                 <constraint firstAttribute="bottom" secondItem="BbV-xT-3up" secondAttribute="bottom" id="iLM-qy-IaL"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="152.5" y="-157"/>
+            <point key="canvasLocation" x="152.5" y="-155.5"/>
         </view>
     </objects>
     <resources>
-        <image name="Login_Button" width="243" height="35"/>
-        <image name="hanliuquan" width="67" height="93"/>
+        <image name="AppIcon60x60-2" width="60" height="60"/>
         <image name="icon_login_nick" width="16" height="16"/>
         <image name="icon_register_password" width="16" height="16"/>
         <image name="other_slider_bg" width="320" height="568"/>

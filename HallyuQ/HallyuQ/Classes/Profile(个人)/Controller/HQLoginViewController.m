@@ -24,7 +24,6 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"退出" style:UIBarButtonItemStyleBordered target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = backItem;
     [self testLogin];
-//    sssqweqweasda
     
 }   
 
@@ -79,10 +78,6 @@
 - (void)back
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

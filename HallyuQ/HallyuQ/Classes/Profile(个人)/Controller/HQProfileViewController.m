@@ -224,7 +224,6 @@
                 return 500;
             }
             break;
-            
         case accountTabViewButtonTypeThread:
             if (_dataArray) {
                 return 221;
@@ -233,8 +232,6 @@
                 return 500;
             }
             break;
-            
-            
         default:
             break;
     }
@@ -281,8 +278,7 @@
                     return cell;
                 }
                 break;
-            }
-                
+            }                
             case accountTabViewButtonTypeThread:
             {
                 if (!_dataArray) {
